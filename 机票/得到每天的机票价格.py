@@ -7,7 +7,7 @@ startDate=datetime.datetime.strptime(startdate,'%Y%m%d')
 endDate=datetime.datetime.strptime(enddate,'%Y%m%d')
 dcity = {"ZUH": "珠海", "CAN": "广州", "SZX": "深圳"}
 # acity = {"SHA": "上海", "HGH": "杭州", "NGB": "宁波"}
-acity = {"KHN": "南昌"}
+acity = {"KHN": "北京"}
 url = "http://flights.ctrip.com/itinerary/api/12808/lowestPrice"
 def getprice(url,dcity,acity,startDate,endDate):
     finalldata = {}
