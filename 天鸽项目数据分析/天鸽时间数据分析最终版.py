@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import time
 
 import xlrd
 from xlutils.copy import copy
@@ -8,14 +9,15 @@ import datetime
 def string_toDatetime(st):
     return datetime.datetime.strptime(st,"%Y-%m-%d %H:%M:%S.%f")
 
+
 #计算每个步骤所用的时间
 def getfinaltime(start1_time,end1_time):
     if end1_time >= start1_time:
         time1 = (end1_time - start1_time)
-        finaltime = str(time1.seconds) + "." + str(time1.microseconds)[:3]
+        finaltime = str(time1.seconds) + "." + str(float('%.6f' % time1.microseconds)/1000000).split('.')[1]
     else:
         time1 = (start1_time - end1_time)
-        finaltime = "-" + str(time1.seconds) + "." + str(time1.microseconds)[:3]
+        finaltime = "-" + str(time1.seconds) + "." + str(float('%.6f' % time1.microseconds)/1000000).split('.')[1]
     return finaltime
 
 #读取xls里的数据存储到列表里
@@ -92,7 +94,7 @@ def writefile(read_file,types,msgids,starttimes,endtimes):
 
 
 
-path = "F:/work/天鸽/log/20181023.xls"
+path = "C:\\Users\\Administrator\\Desktop\\1.xls"
 #python3输入
 # path = input('请输入文件目录')
 #python27输入
