@@ -51,9 +51,7 @@ def writefile(read_file,types,msgids,starttimes,endtimes):
         write_sheet.write(0, clo,title[clo] )
     for msgid in msgids:
         if count+7<len(msgids):
-            print(count)
-            print(msgid)
-            print(msgids[count + 7])
+            print("count       "+str(count))
             if msgid == msgids[count+7]:
                 for newcount in range(count,count+8):
                     newtype = types[newcount]
@@ -61,7 +59,9 @@ def writefile(read_file,types,msgids,starttimes,endtimes):
                     newstarttime = starttimes[newcount]
                     newendtime = endtimes[newcount]
                     finaltime=''
-                    print(newcount)
+                    print("newtype       " + str(newtype))
+                    print("newstarttime       " + str(newstarttime))
+                    print("newmsgid       " + str(newmsgid))
                     if starttimes[newcount] == '':
                         finaltime = "no start time"
                     else:
@@ -94,7 +94,7 @@ def writefile(read_file,types,msgids,starttimes,endtimes):
 
 
 
-path = "C:\\Users\\Administrator\\Desktop\\1.xls"
+path = "C:\\Users\\Administrator\\Desktop\\1300.xls"
 #python3输入
 # path = input('请输入文件目录')
 #python27输入
