@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="170cb462-38bb-4e6f-a52f-9e84548814fd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/天鸽项目数据分析/天鸽时间数据分析最终版.py" beforeDir="false" afterPath="$PROJECT_DIR$/天鸽项目数据分析/天鸽时间数据分析最终版.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/爬取pyqt5编程网站/爬取pyqt编程网站.py" beforeDir="false" afterPath="$PROJECT_DIR$/爬取pyqt5编程网站/爬取pyqt编程网站.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -568,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540884918997</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="增加header">
+      <created>1540980325923</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1540980325923</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -634,7 +639,8 @@
     <MESSAGE value="更新下" />
     <MESSAGE value="增加天鸽的数据分析脚本" />
     <MESSAGE value="增加爬取pyqt5编程网站" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加爬取pyqt5编程网站" />
+    <MESSAGE value="增加header" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加header" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
