@@ -70,6 +70,7 @@ class NumberBar(QWidget):
 
     def resize(self,mm):
         self.cr = mm.contentsRect()
+        # print(self.cr.left(),self.cr.top(),self.getWidth(),self.cr.height())
         rec = QRect(self.cr.left(), self.cr.top(), self.getWidth(), self.cr.height())
         self.setGeometry(rec)
 

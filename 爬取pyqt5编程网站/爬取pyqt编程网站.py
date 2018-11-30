@@ -17,7 +17,7 @@ def downpic(url,header):
     #下载图片并保存到本地
     imgname = url.split('/')[-1]
     filename = os.path.join(path, imgname)
-    if url.endswith('.png') or url.endswith('jpg') or url.endswith('gif'):
+    if url.endswith('.png') or url.endswith('jpg') or url.endswith('gif') or url.endswith('jpeg'):
         r = requests.get(url,headers=header)
         try:
             fw = open(filename, 'wb')  # 指定绝对路径
@@ -31,7 +31,7 @@ def get():
     urls = ["http://www.xdbcb8.com/pyqt5/"]
     for i in range(2, 11):
         urls.append("http://www.xdbcb8.com/pyqt5/page/"+str(i))
-    for url in urls:
+    for url in urls[3:4]:
         text = requests.get(url)
         soup = BeautifulSoup(text.text, 'html.parser')
         #设置消息头的User-Agent
@@ -46,10 +46,11 @@ def get():
         #获取每节课的内容
         for item in soup.find_all("a", text="阅读全文"):
         # if True:
+
             doc = docx.Document()
             #获取一节课的url
-            #newurl = item.get('href')
-            newurl = 'http://www.xdbcb8.com/archives/98.html'
+            newurl = item.get('href')
+            # newurl = 'http://www.xdbcb8.com/archives/98.html'
             #设置消息头
             header = {
                 "Accept": "*/*",
@@ -64,6 +65,7 @@ def get():
             newsoup = BeautifulSoup(itemtext.text,'html.parser')
             #获取这节课的课名
             title = newsoup.find_all('h1',class_ = 'entry-title')
+            print("下载" + title[0].text + "中。。。。。。。。。。。。。。。。。。。。。。。。。。。。。")
             doc.add_heading(title[0].text,0)
 
             for newitem in newsoup.find_all(['h4','h5','p','pre','img']):
@@ -85,8 +87,15 @@ def get():
                         #获取图片的url
                         if newitem.attrs.get('class') != None:
                                 picurl = newitem.attrs.get('data-original')
-                                filename = downpic(picurl,header)
-                                doc.add_picture(filename, width=docx.shared.Cm(17),height=docx.shared.Cm(8))
+                                if picurl != None:
+                                    filename = downpic(picurl,header)
+                                    print(filename)
+                                    if filename != "F:/work/python/pyqt5/imgs\\10":
+                                        try:
+                                            doc.add_picture(filename, width=docx.shared.Cm(17), height=docx.shared.Cm(8))
+                                        except docx.image.exceptions.UnrecognizedImageError as e:
+                                            pass
+
 
                     else:
                         pass
@@ -100,33 +109,33 @@ def get():
             time.sleep(random.randint(1,5))
 
 
-# get()
+get()
 
 
-def kk():
-    with open("sduview.html",'rb') as file :
-        newsoup = BeautifulSoup(file, 'html.parser')
-        title = newsoup.find_all('h1',class_ = 'entry-title')
-
-        for item in newsoup.find_all(['h4','h5','p','pre','img']):
-            if item.text in [" 学点编程吧","搜索热点","文章来源：www.xdbcb8.com，转载请注明出处。"]:
-                continue
-            elif item.string != '最后':
-                if item.name == 'h4':
-                    print(item.text)
-                elif item.name == 'h5':
-                    print(item.text)
-                elif item.name == 'p':
-                    print(item.text)
-                elif item.name == 'pre':
-                    print(item.text)
-                elif item.name == 'img':
-                    if item.attrs.get('class') != None:
-
-                        print(item.attrs.get('data-original'))
-                else:
-                    pass
-            else:
-                break
-kk()
+# def kk():
+#     with open("sduview.html",'rb') as file :
+#         newsoup = BeautifulSoup(file, 'html.parser')
+#         title = newsoup.find_all('h1',class_ = 'entry-title')
+#
+#         for item in newsoup.find_all(['h4','h5','p','pre','img']):
+#             if item.text in [" 学点编程吧","搜索热点","文章来源：www.xdbcb8.com，转载请注明出处。"]:
+#                 continue
+#             elif item.string != '最后':
+#                 if item.name == 'h4':
+#                     print(item.text)
+#                 elif item.name == 'h5':
+#                     print(item.text)
+#                 elif item.name == 'p':
+#                     print(item.text)
+#                 elif item.name == 'pre':
+#                     print(item.text)
+#                 elif item.name == 'img':
+#                     if item.attrs.get('class') != None:
+#
+#                         print(item.attrs.get('data-original'))
+#                 else:
+#                     pass
+#             else:
+#                 break
+# kk()
 

@@ -22,9 +22,6 @@ class MyMainWindow(QMainWindow, Ui_NetTools,QPushButton):
 
 
 
-
-
-
 class ChildrenForm(QTabWidget,Ui_Form):
     def __init__(self):
         super(ChildrenForm,self).__init__()
@@ -34,7 +31,6 @@ class ChildrenForm(QTabWidget,Ui_Form):
         self.Numbar = NumberBar(self.sendlog_plainTextEdit).resize(self)
         self.Numbar = NumberBar(self.send_plainTextEdit).resize(self)
 
-
     def logic(self):
         self.iplineEdit.setInputMask('000.000.000.000; ')
         self.portlineEdit.setValidator(QIntValidator())
@@ -42,7 +38,12 @@ class ChildrenForm(QTabWidget,Ui_Form):
 
 
     def connectserver(self):
-        print("click")
+        ip = self.iplineEdit.text()
+        port = int(self.portlineEdit.text())
+        ADDR = (ip,port)
+        self.cs = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        self.cs.connect(ADDR)
+        print(ADDR)
 
 
 

@@ -1,8 +1,12 @@
 import openpyxl
 import datetime
+
+import uiautomation as automation
+
+
+
 def string_toDatetime(st):
     return datetime.datetime.strptime(st,"%Y-%m-%d %H:%M:%S.%f")
-
 
 #python3输入
 path = input('请输入文件目录\n')
