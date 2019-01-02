@@ -15,11 +15,13 @@ class TcpLogic(tcp_udp_web_ui.ToolsUi):
 
         self.link = False  # 用于标记是否开启了连接
 
+
     def tcp_server_start(self):
         """
         功能函数，TCP服务端开启的方法
         :return: None
         """
+
         self.tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # 取消主动断开连接四次握手后的TIME_WAIT状态
         self.tcp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
